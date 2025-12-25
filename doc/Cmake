@@ -1,0 +1,37 @@
+
+cmake_minimum_required(VERSION 3.16)
+project(transit_planner_simulator LANGUAGES CXX)
+
+# Require C++20
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Output directories
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# Include headers
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+# Create the executable with just main.cpp for now.
+# As you implement .cpp files, add them to the target below or glob them.
+add_executable(transit_sim
+    src/main.cpp
+)
+
+# Example: once you implement your sources, add them like this:
+# file(GLOB_RECURSE SRC_FILES
+#     ${CMAKE_SOURCE_DIR}/src/*.cpp
+#     ${CMAKE_SOURCE_DIR}/src/models/*.cpp
+#     ${CMAKE_SOURCE_DIR}/src/ds/*.cpp
+#     ${CMAKE_SOURCE_DIR}/src/algo/*.cpp
+#     ${CMAKE_SOURCE_DIR}/src/sim/*.cpp
+# )
+# target_sources(transit_sim PRIVATE ${SRC_FILES})
+
+# Warnings (recommend enabling during development)
+if (MSVC)
+    target_compile_options(transit_sim PRIVATE /W4 /permissive-)
+else()
+    target_compile_options(transit_sim PRIVATE -Wall -Wextra -Wpedantic)
+endif()
