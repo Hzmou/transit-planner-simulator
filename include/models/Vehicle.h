@@ -36,7 +36,7 @@ public:
 protected:
     Id id_ {0};
     std::string label_;
-    std::uint32_t capacity_ {0};
+    std::uint32_t capacity_ {0}; //
     const Route* route_ {nullptr};
     std::size_t route_index_ {0};
 };
